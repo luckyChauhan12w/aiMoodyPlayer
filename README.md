@@ -26,5 +26,5 @@ It leverages [face-api.js](https://github.com/justadudewhohacks/face-api.js) to 
 
 ### 1️⃣ Clone the repo
 ```bash
-git clone [https://github.com/your-username/moody-player.git](https://github.com/luckyChauhan12w/aiMoodyPlayer.git]
+git clone https://github.com/your-username/moody-player.git](https://github.com/luckyChauhan12w/aiMoodyPlayer.git
 cd moody-player
