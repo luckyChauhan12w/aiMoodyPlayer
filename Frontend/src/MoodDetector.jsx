@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import * as faceapi from "face-api.js";
 
 export default function MoodDetector() {
@@ -6,7 +6,7 @@ export default function MoodDetector() {
   //   const canvasRef = useRef(null);
   const [mood, setMood] = useState("Detecting...");
 
-  useEffect(() => {
+  const runDetaction = () => {
     const loadModels = async () => {
       const MODEL_URL = "/models";
       await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
@@ -23,7 +23,7 @@ export default function MoodDetector() {
     };
 
     loadModels().then(startVideo);
-  }, []);
+  };
 
   const handleVideoPlay = () => {
     const video = videoRef.current;
@@ -48,7 +48,11 @@ export default function MoodDetector() {
           emotions[a] > emotions[b] ? a : b
         );
         setMood(dominant);
+      } else {
+        setMood("face note detacting...");
       }
+
+      //   console.log(detections[0]?.expressions || "Face not detected!");
     }, 500);
   };
 
@@ -69,6 +73,8 @@ export default function MoodDetector() {
         height="480"
         style={{ position: "absolute", top: 0, left: 0 }}
       /> */}
+
+      <button onClick={runDetaction}>Start</button>
     </div>
   );
 }
