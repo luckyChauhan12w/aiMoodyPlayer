@@ -57,24 +57,31 @@ export default function MoodDetector() {
   };
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <h2>😀 Current Mood: {mood}</h2>
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        width="640"
-        height="480"
-        onPlay={handleVideoPlay}
-      />
-      {/* <canvas
-        ref={canvasRef}
-        width="640"
-        height="480"
-        style={{ position: "absolute", top: 0, left: 0 }}
-      /> */}
+    <>
+      <div className="bg-white rounded-2xl shadow-lg p-6 max-w-lg w-full text-center">
+        <h2 className="text-2xl font-semibold mb-4">
+          😀 Current Mood: <span className="text-indigo-600">{mood}</span>
+        </h2>
 
-      <button onClick={runDetaction}>Start</button>
-    </div>
+        <div className="rounded-xl overflow-hidden border-4 bg-black border-indigo-200 shadow-md mb-4">
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            width="640"
+            height="480"
+            onPlay={handleVideoPlay}
+            className="w-full h-auto"
+          />
+        </div>
+
+        <button
+          onClick={runDetaction}
+          className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-xl shadow transition"
+        >
+          Start Detection
+        </button>
+      </div>
+    </>
   );
 }
